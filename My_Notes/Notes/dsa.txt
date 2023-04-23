@@ -1,0 +1,105 @@
+
+### DSA ####
+
+Data Structure
+- Its a way to Define, Store and Retrieve data in a systematic way.
+
+Algorithm
+- It is a step-by-step procedure, set of instructions  executed in a certain order to get desired output.
+
+Common DS
+  • List
+  • Array
+  • Stack
+  • Queue
+  • Graph
+  • Tree
+
+Algorithm Analysis and Criteria
+  There are several solutions to a given problem. We analyze the algos to find and implement the best suitable
+  algo for the problem.
+  The criteria can be:
+  • Time it takes to execute the algo (Time Complexity)
+  • Memory it takes to execute the algo (Space Complexity)
+
+Asymptotic Analysis
+  It refers to mathematical framing of run-time performance of an algo. We can conclude:
+  • Best case run-time Ω(n)
+  • Average case run-time Θ(n)
+  • Worst case run-time Ο(n)
+
+Linear Data Structure
+ - It has a sequentially arranged data items.
+ - It is stored and accessed in a sequential manner.
+  Ex: Array and List
+
+Common Operations on DS
+ - Insertion: adding an item
+ - Deletion: removing an item
+ - Traversal: accessing and/or printing all items
+ - Searching: find a particular item
+ - Sorting: arrange items in a pre-defined seq
+
+Approaches for Developing Algo
+  - Greedy: find solution by choosing next best option
+  - Divide and Conquer: Diviwde the problem to a minimum possible sub-problem and solve independently
+  - Dynamic Programming: Divide the problem to a minimum possible sub-problem and solve combined
+
+Linked-List
+  List of data-items connected via pointers.
+  - Most high-lev prog. lan. cant directly access a mem.loc. so they don't provide this feature
+  - C lan. we can implement a linked-list
+
+Stack (LIFO/FILO)
+  It is an Abstract Data Type (ADT)
+  - Used to store and retrieve values in LIFO (Last in First Out)
+  - Takes only O(n) time to store / retrieve data
+  - Its used when we need to access data in REVERSE order of their arrival.
+
+  Ex: recursive function call, expression parsing and depth first traversal of graphs
+
+  Operations
+    • push()    - adds an item to stack
+    • pop()     - removes the top stack item
+    • peek()    - gives value of top item without removing it
+    • isempty() - checks if stack is empty
+    • isfull()  - checks if stack is full
+
+Queue (FIFO)
+  It is an Abstract Data Type (ADT)
+  - It is open at both ends unlike a stack.
+  - One end is always used to insert data (enqueue)
+  - Other end is always used to remove data (dequeue)
+  - It is used when we want to work on data-items in the exact sequence of arrival
+
+  Ex: Priority queue and breadth first traversal of graph
+
+  Operations
+    • enqueue() - adds an item to rear of queue
+    • dequeue() - removes the front of queue
+    • peek()    - gives value of front item without removing it
+    • isempty() - checks if stack is empty
+    • isfull()  - checks if stack is full
+
+
+Linear Search
+  - It can find an item in a sequentially arranged data type (list/array).
+  - It compares expected data-item with EACH data-item in the list/Array
+
+  Θ(n) and O(n^2)
+
+Binary Search
+  - It works only on SORTED list or arrays.
+  - It selects the middle and splits list into 2 parts.
+  - First Middle is compared with element to be searched.
+  - If ele.to.search > middle find it in the 2nd part of list
+  - If ele.to.search < middle find it in the 1st part of list
+
+Bubble Sort
+  - It works by repeatedly swapping the adjacent elements if they are in the wrong order
+
+Selection and Insertion Sort
+  - Both create 2 lists SORTED and UNSORTED
+  - Both take 1 element at a time and place it in the sorted list
+  - Insertion Sort take the current element in the UNSORTED list and compare with predecessor element if smaller places please in the sorted sub-list.
+  - Selection Sort will search for the minimum in the UNSORTED list and add it to the sorted sub-list in ascending order

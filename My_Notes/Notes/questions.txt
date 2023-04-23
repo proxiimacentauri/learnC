@@ -1,0 +1,197 @@
+                    ######################################################
+                    ################### Questions in C ###################
+                    ######################################################
+
+|------------------------------------------------------------------------------------------|
+
+Ternary operator
+
+infix expression to postfix
+condition ? value_if_true : value_if_false
+
+Ex:
+    int a = 10, b = 20, c;
+
+    USE EITHER IF or TERNARY
+
+    printf("%d", c);
+
+
+    |----------------------|
+        if (a < b)
+        {
+            c = a;
+        }
+        else
+        {
+            c = b;
+        }
+    |----------OR----------|
+
+        c = (a < b) ? a : b;
+
+    |----------------------|
+
+
+|------------------------------------------------------------------------------------------|
+
+getc()
+    - reads single char from an input stream and returns ASCII val of char
+    - if failed returns EOF
+
+getchar()
+    - can read from stdin (unlike getc() and gechar())
+    - equivalent of getc() but for stdin
+
+getch()
+    - NON-std func present in conio.h used for MS-DOS compilers (Turbo C)
+
+getche()
+    - reads single char from keybord and displays immediately on output screen
+    without waiting for enter key
+
+
+|------------------------------------------------------------------------------------------|
+
+fopen()
+    - To open a file
+    - it creates a new file if the mentioned name doesnt exists
+
+        FILE *fp;
+        fp = fopen("file_name", mode);
+
+        fp - file pointer of datatype file
+        file_name - abs path to the file
+        mode - r,w,a,r+,w+,a+
+
+fclose()
+    - To close a file
+    - closes the file that is pointed by the file pointer
+
+        int fclose(FILE *fp);
+
+        fclose(*fp);
+
+fgets()
+    - to read a file
+    - reads file line by line
+
+            char *fgets(char *string, int n, FILE *fp);
+
+            fgets(buffer, size fp);
+
+            buffer - buffer to put the data in
+            size - size of the buffer
+            fp - file pointer
+
+fprintf()
+    - writes string to a file pointed by fp
+
+        fprintf(fp, "test %d", var_name);
+
+|------------------------------------------------------------------------------------------|
+
+Near Pointer
+- Store 16-bit address
+
+Far Pointer
+- Store 32-bit address
+- memory segments located outside computer memory can be accessed
+
+Huge Pointer
+- Store 32 bit address
+- points to memory segment outside computers memory
+
+Dangling Pointer
+- pointer pointing to a deallocated mem block
+- when we forget to free allocated mem after using malloc and calloc
+
+|------------------------------------------------------------------------------------------|
+
+Format specifier
+
+%c - char
+%s - string
+%p - address
+%d | %i - integer
+%f | %e | %E - float
+
+printf("%0.1f %0.1f", x+y, x-y);
+         ^^^   ^^^
+        Decimal Precision
+
+%o - Octal
+%x | %X - Hex
+
+|------------------------------------------------------------------------------------------|
+
+Storage specifier/ Storage Class
+
+extern
+    - use to extend visibility of C variables and functions
+    - by default funcs are visible during entire program so no need for extern
+    - it is useful when you want to refer to a var defined in a library that
+      we will link to. (the lib would declare such vars are extern)
+    - it tells the compiler that i am ref a global_var and its not here but
+      its OK, cause the linker will know
+
+static
+    - preserve value even if they are out of scope
+    - they exists till termination of program
+
+
+register (only within func)
+    - same as auto vars but compiler stores these in a register of micorpro
+    - use case: when a var needs to accessed very frequency
+    - cant obtain address of register using pointers
+
+
+auto (only within func)
+    - Its default storage class for all variables declared inside a func block
+    - auto vars can only be accessed within a func block
+    - when declared they are assigned a garbage val
+
+volatile
+    - prevent compiler optimization
+    - tells compiler that the value of the var can be changed by anything
+    - it needs to be referenced every single time, system needs to
+      read current value and not store it in a tmp reg
+
+|------------------------------------------------------------------------------------------|
+
+Modifiers
+
+    Keywords which change the meaning of basic datatypes in C
+    It specifies amt of memory to be allocated
+
+    short
+    long
+    unsigned
+    signed
+    long long
+
+|------------------------------------------------------------------------------------------|
+
+enumerations
+    - allows int constants to be named
+    - elements in enums are of type int
+    - if no ele in enum appears with =
+      then value of those ele begin with 0 and increase by 1 (left to right)
+    - enum names should be distinct in the same scope from ordinary vars
+
+union
+
+
+|------------------------------------------------------------------------------------------|
+
+Macro vs Function
+
+    - Macro is defined with a pre-proc directive
+    - they are pre-processed before compilation
+    - faster
+    - macro name is replaced by macro value before compilation
+    - doesnt chk any compile time errors
+
+    - Func: Transfer of control takes place during func call
+    - Func: code length remains unaffected
+    - Func: they are compiled

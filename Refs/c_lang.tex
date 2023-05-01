@@ -1,0 +1,498 @@
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+\usepackage{fancyhdr}           % For header and footer
+\usepackage{multicol}           % Allows multicols in tables
+\usepackage{tabularx}           % Intelligent column widths
+\usepackage{tabulary}           % Used in header and footer
+\usepackage{hhline}             % Border under tables
+\usepackage{graphicx}           % For images
+\usepackage{xcolor}             % For hex colours
+%\usepackage[utf8x]{inputenc}    % For unicode character support
+\usepackage[T1]{fontenc}        % Without this we get weird character replacements
+\usepackage{colortbl}           % For coloured tables
+\usepackage{setspace}           % For line height
+\usepackage{lastpage}           % Needed for total page number
+\usepackage{seqsplit}           % Splits long words.
+%\usepackage{opensans}          % Can't make this work so far. Shame. Would be lovely.
+\usepackage[normalem]{ulem}     % For underlining links
+% Most of the following are not required for the majority
+% of cheat sheets but are needed for some symbol support.
+\usepackage{amsmath}            % Symbols
+\usepackage{MnSymbol}           % Symbols
+\usepackage{wasysym}            % Symbols
+%\usepackage[english,german,french,spanish,italian]{babel}              % Languages
+
+% Document Info
+\author{pmg (pmg)}
+\pdfinfo{
+  /Title (c.pdf)
+  /Creator (Cheatography)
+  /Author (pmg (pmg))
+  /Subject (C Cheat Sheet)
+}
+
+% Lengths and widths
+\addtolength{\textwidth}{6cm}
+\addtolength{\textheight}{-1cm}
+\addtolength{\hoffset}{-3cm}
+\addtolength{\voffset}{-2cm}
+\setlength{\tabcolsep}{0.2cm} % Space between columns
+\setlength{\headsep}{-12pt} % Reduce space between header and content
+\setlength{\headheight}{85pt} % If less, LaTeX automatically increases it
+\renewcommand{\footrulewidth}{0pt} % Remove footer line
+\renewcommand{\headrulewidth}{0pt} % Remove header line
+\renewcommand{\seqinsert}{\ifmmode\allowbreak\else\-\fi} % Hyphens in seqsplit
+% This two commands together give roughly
+% the right line height in the tables
+\renewcommand{\arraystretch}{1.3}
+\onehalfspacing
+
+% Commands
+\newcommand{\SetRowColor}[1]{\noalign{\gdef\RowColorName{#1}}\rowcolor{\RowColorName}} % Shortcut for row colour
+\newcommand{\mymulticolumn}[3]{\multicolumn{#1}{>{\columncolor{\RowColorName}}#2}{#3}} % For coloured multi-cols
+\newcolumntype{x}[1]{>{\raggedright}p{#1}} % New column types for ragged-right paragraph columns
+\newcommand{\tn}{\tabularnewline} % Required as custom column type in use
+
+% Font and Colours
+\definecolor{HeadBackground}{HTML}{333333}
+\definecolor{FootBackground}{HTML}{666666}
+\definecolor{TextColor}{HTML}{333333}
+\definecolor{DarkBackground}{HTML}{3D3D3D}
+\definecolor{LightBackground}{HTML}{F8F8F8}
+\renewcommand{\familydefault}{\sfdefault}
+\color{TextColor}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhead{} % Set header to blank
+\fancyfoot{} % Set footer to blank
+\fancyhead[L]{
+\noindent
+\begin{multicols}{3}
+\begin{tabulary}{5.8cm}{C}
+    \SetRowColor{DarkBackground}
+    \vspace{-7pt}
+    {\parbox{\dimexpr\textwidth-2\fboxsep\relax}{\noindent
+        \hspace*{-6pt}\includegraphics[width=5.8cm]{/web/www.cheatography.com/public/images/cheatography_logo.pdf}}
+    }
+\end{tabulary}
+\columnbreak
+\begin{tabulary}{11cm}{L}
+    \vspace{-2pt}\large{\bf{\textcolor{DarkBackground}{\textrm{C Cheat Sheet}}}} \\
+    \normalsize{by \textcolor{DarkBackground}{pmg (pmg)} via \textcolor{DarkBackground}{\uline{cheatography.com/596/cs/255/}}}
+\end{tabulary}
+\end{multicols}}
+
+\fancyfoot[L]{ \footnotesize
+\noindent
+\begin{multicols}{3}
+\begin{tabulary}{5.8cm}{LL}
+  \SetRowColor{FootBackground}
+  \mymulticolumn{2}{p{5.377cm}}{\bf\textcolor{white}{Cheatographer}}  \\
+  \vspace{-2pt}pmg (pmg) \\
+  \uline{cheatography.com/pmg} \\
+  \end{tabulary}
+\vfill
+\columnbreak
+\begin{tabulary}{5.8cm}{L}
+  \SetRowColor{FootBackground}
+  \mymulticolumn{1}{p{5.377cm}}{\bf\textcolor{white}{Cheat Sheet}}  \\
+   \vspace{-2pt}Published 17th February, 2012.\\
+   Updated 1st March, 2020.\\
+   Page {\thepage} of \pageref{LastPage}.
+\end{tabulary}
+\vfill
+\columnbreak
+\begin{tabulary}{5.8cm}{L}
+  \SetRowColor{FootBackground}
+  \mymulticolumn{1}{p{5.377cm}}{\bf\textcolor{white}{Sponsor}}  \\
+  \SetRowColor{white}
+  \vspace{-5pt}
+  %\includegraphics[width=48px,height=48px]{dave.jpeg}
+  Measure your website readability!\\
+  www.readability-score.com
+\end{tabulary}
+\end{multicols}}
+
+
+
+
+\begin{document}
+\raggedright
+\raggedcolumns
+
+% Set font size to small. Switch to any value
+% from this page to resize cheat sheet text:
+% www.emerson.emory.edu/services/latex/latex_169.html
+\footnotesize % Small font.
+
+\begin{multicols*}{3}
+
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{read file char-by-char}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{\#include \textless{}stdio.h\textgreater{}} \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{} \tn 
+% Row Count 1 (+ 0)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{FILE *h;} \tn 
+% Row Count 2 (+ 1)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{int ch;} \tn 
+% Row Count 3 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{h = fopen("filename", "rb");} \tn 
+% Row Count 4 (+ 1)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{/* error checking missing */} \tn 
+% Row Count 5 (+ 1)
+% Row 6
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{while ((ch = fgetc(h)) != EOF) \{} \tn 
+% Row Count 6 (+ 1)
+% Row 7
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{~~~~/* deal with ch */} \tn 
+% Row Count 7 (+ 1)
+% Row 8
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{\}} \tn 
+% Row Count 8 (+ 1)
+% Row 9
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{/* if needed test why last read failed */} \tn 
+% Row Count 9 (+ 1)
+% Row 10
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{if (feof(h) || ferror(h)) /* whatever */;} \tn 
+% Row Count 10 (+ 1)
+% Row 11
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{fclose(h);} \tn 
+% Row Count 11 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{You can replace fgetc(h) with getchar() to read from standard input.}  \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{read file line-by-line}}  \tn
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{\#include \textless{}stdio.h\textgreater{} \newline % Row Count 1 (+ 1)
+FILE *h; \newline % Row Count 2 (+ 1)
+char line{[}100{]}; \newline % Row Count 3 (+ 1)
+h = fopen("filename", "rb"); \newline % Row Count 4 (+ 1)
+/* error checking missing */ \newline % Row Count 5 (+ 1)
+while (fgets(line, sizeof line, h)) \{ \newline % Row Count 6 (+ 1)
+~~~~/* deal with line */ \newline % Row Count 7 (+ 1)
+\} \newline % Row Count 8 (+ 1)
+/* if needed test why last read failed */ \newline % Row Count 9 (+ 1)
+if (feof(h) || ferror(h)) /* whatever */; \newline % Row Count 10 (+ 1)
+fclose(h);% Row Count 11 (+ 1)
+} \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{Flexible Array Member}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{How to declare a FAM?} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}By using empty brackets as the last member of a struct.} \tn 
+% Row Count 3 (+ 3)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{How to define the size for an object containg a FAM?} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}ptr = malloc(sizeof *ptr + sizeof (FAMTYPE{[}wantedsize{]}));} \tn 
+% Row Count 7 (+ 4)
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{Do not use FAMs! They were known as {\emph{struct hack}} before C99 and, now as then, feel like a dirty hack.}  \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{\textless{}stdio.h\textgreater{} functions with a FILE pointer at the end}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{char *fgets(char *, int, FILE *);} \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{int fputc(int, FILE *);} \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{int fputs(char *, FILE *);} \tn 
+% Row Count 3 (+ 1)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{size\_t fread(void *, size\_t, size\_t, FILE *);} \tn 
+% Row Count 4 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{FILE *freopen(char *, char *, FILE *);} \tn 
+% Row Count 5 (+ 1)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{size\_t fwrite(void *, size\_t, size\_t, FILE *);} \tn 
+% Row Count 6 (+ 1)
+% Row 6
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{int ungetc(int, FILE *);} \tn 
+% Row Count 7 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{p{0.74655 cm} x{4.23045 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{dynamic memory}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{Remember to {\bf{\#include \textless{}stdlib.h\textgreater{}}}} \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{Allocate}}} \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+\seqsplit{malloc} & {\bf{ptr = malloc(n * sizeof *ptr);}} \tn 
+% Row Count 4 (+ 2)
+% Row 3
+\SetRowColor{white}
+\seqsplit{calloc} & {\bf{ptr = calloc(n, sizeof *ptr);}} \tn 
+% Row Count 5 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{Change size}}} \tn 
+% Row Count 6 (+ 1)
+% Row 5
+\SetRowColor{white}
+\seqsplit{realloc} & {\bf{newsize = n * sizeof *ptr; tmp = realloc(ptr, newsize); if (tmp) ptr = tmp; else /* ptr is still valid */;}} \tn 
+% Row Count 10 (+ 4)
+% Row 6
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{Release}}} \tn 
+% Row Count 11 (+ 1)
+% Row 7
+\SetRowColor{white}
+free & {\bf{free(ptr);}} \tn 
+% Row Count 12 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{remove trailing newline}}  \tn
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{How do I remove the final newline in a string? \newline % Row Count 1 (+ 1)
+len = strlen(data); \newline % Row Count 2 (+ 1)
+if (len \&\& data{[}len - 1{]} == '\textbackslash{}n') data{[}-{}-len{]} = 0; \newline % Row Count 4 (+ 2)
+or, if you don't need to keep and update data length \newline % Row Count 6 (+ 2)
+data{[}strcspn(data, "\textbackslash{}n"){]} = 0;% Row Count 7 (+ 1)
+} \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{If len is known in advance, do not call strlen(). You can pass the updated len to the caller.}  \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{1.89126 cm} x{3.08574 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Casting}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{\textasciicircum{}{\emph{Casts in C are almost always wrong. When are they right?}}\textasciicircum{}} \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+\textless{}ctype.h\textgreater{} & isupper({\bf{(unsigned char)}}ch) \tn 
+% Row Count 4 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+\%p printf specifiers & printf("{\bf{\%p}}", {\bf{(void*)}}ptr) \tn 
+% Row Count 6 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{Specifically a cast to the return value of {\bf{malloc()}} is a definite sign the code author either didn't know what he was doing or didn't choose a good language for the implementation of whatever he's doing.}  \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{(BSD) sockets}}  \tn
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{Headers needed \newline % Row Count 1 (+ 1)
+\#include \textless{}arpa/inet.h\textgreater{} \newline % Row Count 2 (+ 1)
+\#include \textless{}netdb.h\textgreater{} \newline % Row Count 3 (+ 1)
+\#include \textless{}string.h\textgreater{} \newline % Row Count 4 (+ 1)
+\#include \textless{}sys/socket.h\textgreater{} \newline % Row Count 5 (+ 1)
+\#include \textless{}unistd.h\textgreater{} \newline % Row Count 6 (+ 1)
+initialize with \newline % Row Count 7 (+ 1)
+getaddrinfo() \newline % Row Count 8 (+ 1)
+loop to find and connect a socket \newline % Row Count 9 (+ 1)
+socket() \newline % Row Count 10 (+ 1)
+connect() \newline % Row Count 11 (+ 1)
+if needed: close() \newline % Row Count 12 (+ 1)
+after loop: freeaddrinfo() \newline % Row Count 13 (+ 1)
+getpeername(), getsockname() \newline % Row Count 14 (+ 1)
+send() or recv() or sendto() or recvfrom() \newline % Row Count 15 (+ 1)
+close()% Row Count 16 (+ 1)
+} \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{Predefined C macros}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{\_\_FILE\_\_} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}{\bf{"filename.c"}} or something like that} \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{\_\_LINE\_\_} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}{\bf{42}} or another integer} \tn 
+% Row Count 4 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{\_\_STDC\_\_} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}{\bf{1}}} \tn 
+% Row Count 6 (+ 2)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{\_\_STDC\_VERSION\_\_} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}undefined for C89; {\bf{199901L}} for C99; {\bf{201112L}} for C11} \tn 
+% Row Count 9 (+ 3)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{\_\_DATE\_\_} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}{\bf{"Feb 17 2012"}} for example} \tn 
+% Row Count 11 (+ 2)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{\_\_TIME\_\_} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}{\bf{"15:16:17"}} for example} \tn 
+% Row Count 13 (+ 2)
+% Row 6
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{\_\_func\_\_} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}{\bf{"main"}} for example} \tn 
+% Row Count 15 (+ 2)
+% Row 7
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{\_\_STDC\_HOSTED\_\_} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}{\bf{0}} or {\bf{1}}} \tn 
+% Row Count 17 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{1.69218 cm} x{3.28482 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Reserved identifiers}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{Reserved for all uses anywhere}}} \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+\_{[}A-Z{]}*; \_\_* & E{[}A-Z{]}*; E{[}0-9{]}* \tn 
+% Row Count 3 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+is{[}a-z{]}*; to{[}a-z{]}* & SIG{[}A-Z{]}*; SIG\_{[}A-Z{]}* \tn 
+% Row Count 5 (+ 2)
+% Row 3
+\SetRowColor{white}
+LC\_{[}A-Z{]}* & *\_t \tn 
+% Row Count 6 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{str{[}a-z{]}*; mem{[}a-z{]}*; wcs{[}a-z{]}*} \tn 
+% Row Count 7 (+ 1)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{{\emph{all math functions}} possibly followed by {\bf{f}} or {\bf{l}}} \tn 
+% Row Count 9 (+ 2)
+% Row 6
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{When {\bf{\#include \textless{}limits.h\textgreater{}}} is present} \tn 
+% Row Count 10 (+ 1)
+% Row 7
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{*\_MAX} \tn 
+% Row Count 11 (+ 1)
+% Row 8
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{When {\bf{\#include \textless{}signal.h\textgreater{}}} is present} \tn 
+% Row Count 12 (+ 1)
+% Row 9
+\SetRowColor{white}
+SA\_* & sa\_* \tn 
+% Row Count 13 (+ 1)
+% Row 10
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{POSIX adds a few other identifiers} \tn 
+% Row Count 14 (+ 1)
+% Row 11
+\SetRowColor{white}
+{\bf{\textless{}dirent.h\textgreater{}}} & d\_* \tn 
+% Row Count 16 (+ 2)
+% Row 12
+\SetRowColor{LightBackground}
+{\bf{\textless{}fcntl.h\textgreater{}}} & l\_*; F\_*; O\_*; S\_* \tn 
+% Row Count 17 (+ 1)
+% Row 13
+\SetRowColor{white}
+{\bf{\textless{}grp.h\textgreater{}}} & gr\_* \tn 
+% Row Count 18 (+ 1)
+% Row 14
+\SetRowColor{LightBackground}
+{\bf{\textless{}pwd.h\textgreater{}}} & pw\_* \tn 
+% Row Count 19 (+ 1)
+% Row 15
+\SetRowColor{white}
+{\bf{\textless{}sys/stat.h\textgreater{}}} & st\_*; S\_* \tn 
+% Row Count 21 (+ 2)
+% Row 16
+\SetRowColor{LightBackground}
+{\bf{\textless{}sys/times.h\textgreater{}}} & tms\_* \tn 
+% Row Count 23 (+ 2)
+% Row 17
+\SetRowColor{white}
+{\bf{\textless{}termios.h\textgreater{}}} & C\_*; V\_*; I\_*; O\_*; TC*; B{[}0-9{]}* \tn 
+% Row Count 25 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+
+% That's all folks
+\end{multicols*}
+
+\end{document}
